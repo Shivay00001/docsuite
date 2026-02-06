@@ -113,6 +113,18 @@ class APIConfig:
 
 
 @dataclass
+class LicensingConfig:
+    """SaaS Licensing Configuration"""
+    enabled: bool = True
+    public_key_path: Optional[Path] = None
+    server_url: str = "https://license.docsuite.ai/api/v1"
+    offline_mode: bool = True
+    usage_tracking_enabled: bool = True
+    sync_interval_hours: int = 24
+
+
+
+@dataclass
 class Config:
     """Master Configuration Container"""
     ocr: OCRConfig = field(default_factory=OCRConfig)
@@ -120,6 +132,7 @@ class Config:
     storage: StorageConfig = field(default_factory=StorageConfig)
     security: SecurityConfig = field(default_factory=SecurityConfig)
     api: APIConfig = field(default_factory=APIConfig)
+    licensing: LicensingConfig = field(default_factory=LicensingConfig)
     
     debug: bool = False
     log_level: str = "INFO"
@@ -133,6 +146,7 @@ class Config:
             storage=StorageConfig(**config_dict.get('storage', {})),
             security=SecurityConfig(**config_dict.get('security', {})),
             api=APIConfig(**config_dict.get('api', {})),
+            licensing=LicensingConfig(**config_dict.get('licensing', {})),
             debug=config_dict.get('debug', False),
             log_level=config_dict.get('log_level', 'INFO'),
         )
@@ -146,6 +160,7 @@ class Config:
                        for k, v in self.storage.__dict__.items()},
             'security': self.security.__dict__,
             'api': self.api.__dict__,
+            'licensing': self.licensing.__dict__,
             'debug': self.debug,
             'log_level': self.log_level,
         }
