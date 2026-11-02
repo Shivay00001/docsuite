@@ -68,3 +68,7 @@ Copyright (c) 2026 Shivay Singh
 
 ---
 Developed by **Shivay Singh**
+
+## Built by VisionQuantech
+
+Part of the [VisionQuantech](https://visionquantech.com/) AI automation studio. See [AI voice agents](https://visionquantech.com/ai-voice-agents) and the guide to [AI phone answering for real estate agents](https://visionquantech.com/blog/ai-phone-answering-service-for-real-estate-agents).
